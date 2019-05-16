@@ -53,6 +53,7 @@
 		FF3B48E6228D65A8005F4F58 /* SocketServer */ = {
 			isa = PBXGroup;
 			children = (
+				FF3B48F7228D675A005F4F58 /* Server */,
 				FF3B48E7228D65A8005F4F58 /* AppDelegate.swift */,
 				FF3B48E9228D65A8005F4F58 /* ViewController.swift */,
 				FF3B48EB228D65AB005F4F58 /* Assets.xcassets */,
@@ -61,6 +62,13 @@
 				FF3B48F1228D65AB005F4F58 /* SocketServer.entitlements */,
 			);
 			path = SocketServer;
+			sourceTree = "<group>";
+		};
+		FF3B48F7228D675A005F4F58 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Server;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
