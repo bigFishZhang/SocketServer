@@ -18,6 +18,7 @@
 		FF17F03622924C1000C660FA /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F03122924C1000C660FA /* ysocket.swift */; };
 		FF17F03722924C1000C660FA /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F03222924C1000C660FA /* ytcpsocket.swift */; };
 		FF17F03922924D1200C660FA /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F03822924D1200C660FA /* ServerManager.swift */; };
+		FF55C7B92292536F00B14215 /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55C7B82292536F00B14215 /* ClientManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FF17F03122924C1000C660FA /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = "<group>"; };
 		FF17F03222924C1000C660FA /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = "<group>"; };
 		FF17F03822924D1200C660FA /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		FF55C7B82292536F00B14215 /* ClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				FF17F02422924C0000C660FA /* LaunchScreen.storyboard */,
 				FF17F02722924C0000C660FA /* Info.plist */,
 				FF17F03822924D1200C660FA /* ServerManager.swift */,
+				FF55C7B82292536F00B14215 /* ClientManager.swift */,
 			);
 			path = SocketServerApp;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				FF17F03322924C1000C660FA /* yudpsocket.c in Sources */,
 				FF17F03722924C1000C660FA /* ytcpsocket.swift in Sources */,
 				FF17F03522924C1000C660FA /* ytcpsocket.c in Sources */,
+				FF55C7B92292536F00B14215 /* ClientManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

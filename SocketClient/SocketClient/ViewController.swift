@@ -20,7 +20,19 @@ class ViewController: UIViewController {
         }
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let msg = "hello!"
+        let data = msg.data(using: .utf8)!
+        print(data.count)
+        if socket.sendMsg("hello"){
+            
+            print("send msg success!")
+        }else{
+            print("send msg failed !")
+        }
+    }
+    
 }
+
+
 

@@ -10,7 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     fileprivate lazy var serverMgr :ServerManager = ServerManager()
+ 
     @IBOutlet weak var serverStatusLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,9 +21,13 @@ class ViewController: UIViewController {
 
     @IBAction func startServerClick(_ sender: UIButton) {
         serverMgr.startRunning()
+        serverStatusLabel.text = "服务已启动ing"
     }
+    
     @IBAction func stopServerClick(_ sender: Any) {
-     serverMgr.stopRunning()
+        serverMgr.stopRunning()
+        serverStatusLabel.text = "服务已关闭"
     }
+
 }
 

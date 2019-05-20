@@ -20,3 +20,9 @@ extension ZBSocket {
         return tcpClient.connect(timeout: 5).0
     }
 }
+
+extension ZBSocket {
+    func sendMsg(_ msg : String) -> Bool {
+        return tcpClient.send(str: msg).0
+    }
+}
