@@ -25,13 +25,39 @@ extension ClientManager {
         //参数是消息的长度
         isClientConnected = true
         while isClientConnected {
-            if let msg = tcpClient.read(6){
-                let msgData = Data(bytes: msg, count: 6)
+            if let lMsg = tcpClient.read(4){
+                // 1 读取数据长度
+                let headData = Data(bytes: lMsg, count: 4)
+                var length : Int = 0
+                (headData as NSData).getBytes(&length, length: 4)
+                
+                // 2 读取类型
+                guard let typeMsg = tcpClient.read(2) else {
+                    print("read type failed!")
+                    return;
+                }
+                let typeData = Data(bytes: typeMsg, count: 2)
+                var type : Int = 0
+                (typeData as NSData).getBytes(&type, length: 2)
+                print(type)
+                
+                // 3 读取消息
+                guard let msg = tcpClient.read(length) else {
+                    print("read msg failed!")
+                    return;
+                }
+                let msgData = Data(bytes: msg, count: length)
+                
+                
+//                let msgData = Data(bytes: msg, count: 6)
                 let msgStr = String(data: msgData, encoding: .utf8)
                 print(msgStr ?? "miss msg")
+//
+                
             }else{
                 print("客户端断开连接")
-                  isClientConnected = false
+                isClientConnected = false
+                
             }
         }
        

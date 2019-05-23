@@ -21,10 +21,18 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let msg = "hello!"
-        let data = msg.data(using: .utf8)!
-        print(data.count)
-        if socket.sendMsg("hello"){
+         let msg = "hello zhangdayu..."
+         let data = msg.data(using: .utf8)!
+        // 1 消息长度写到data
+        var length = data.count
+        let headData = Data(bytes: &length, count: 4)
+        // 2 消息类型
+        var tempType = 2
+        let typeData = Data(bytes: &tempType, count: 2)
+        // 3 发送消息
+        let totalData = headData + typeData + data;
+
+        if socket.sendMsg(totalData){
             
             print("send msg success!")
         }else{

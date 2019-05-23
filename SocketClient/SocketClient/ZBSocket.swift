@@ -22,7 +22,7 @@ extension ZBSocket {
 }
 
 extension ZBSocket {
-    func sendMsg(_ msg : String) -> Bool {
-        return tcpClient.send(str: msg).0
+    func sendMsg(_ msg : Data) -> Bool {
+        return tcpClient.send(data: msg).0
     }
 }

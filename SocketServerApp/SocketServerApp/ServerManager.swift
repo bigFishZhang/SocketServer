@@ -27,7 +27,10 @@ extension ServerManager {
         //2 开始接收连接
         while isServerRunning {
             DispatchQueue.global().async {
-                if let client =  self.serverSocket.accept(){
+                if let client = self.serverSocket.accept(){
+//                    DispatchQueue.global().async {
+//                      
+//                    }
                     print("accept connect")
                     self.handleClient(client)
                 }
