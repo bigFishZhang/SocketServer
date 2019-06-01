@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3820FB7A1C9C58E2436B3333 /* Pods_SocketClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC118B18E68FF0B3E7F992E /* Pods_SocketClient.framework */; };
 		FF17EFEE2292486500C660FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17EFED2292486500C660FA /* AppDelegate.swift */; };
 		FF17EFF02292486500C660FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17EFEF2292486500C660FA /* ViewController.swift */; };
 		FF17EFF32292486500C660FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF17EFF12292486500C660FA /* Main.storyboard */; };
@@ -18,9 +19,14 @@
 		FF17F0082292487500C660FA /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F0032292487500C660FA /* ysocket.swift */; };
 		FF17F0092292487500C660FA /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F0042292487500C660FA /* ytcpsocket.swift */; };
 		FF17F00B2292488E00C660FA /* ZBSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F00A2292488E00C660FA /* ZBSocket.swift */; };
+		FF32FB5522A1400700BFC087 /* IMMessage.proto in Sources */ = {isa = PBXBuildFile; fileRef = FF32FB5422A1400700BFC087 /* IMMessage.proto */; };
+		FF32FB5722A14A2700BFC087 /* Immessage.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF32FB5622A14A2700BFC087 /* Immessage.proto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31CE0860FE83144D0F957458 /* Pods-SocketClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocketClient/Pods-SocketClient.release.xcconfig"; sourceTree = "<group>"; };
+		5EC118B18E68FF0B3E7F992E /* Pods_SocketClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocketClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2371F4DD759A7F0A24E923F /* Pods-SocketClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocketClient/Pods-SocketClient.debug.xcconfig"; sourceTree = "<group>"; };
 		FF17EFEA2292486500C660FA /* SocketClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF17EFED2292486500C660FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF17EFEF2292486500C660FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +40,8 @@
 		FF17F0032292487500C660FA /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = "<group>"; };
 		FF17F0042292487500C660FA /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = "<group>"; };
 		FF17F00A2292488E00C660FA /* ZBSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZBSocket.swift; sourceTree = "<group>"; };
+		FF32FB5422A1400700BFC087 /* IMMessage.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = IMMessage.proto; sourceTree = "<group>"; };
+		FF32FB5622A14A2700BFC087 /* Immessage.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Immessage.proto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3820FB7A1C9C58E2436B3333 /* Pods_SocketClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		075299276C0E56F75B7F89FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5EC118B18E68FF0B3E7F992E /* Pods_SocketClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D4D8B0CB5EC288130CBF363 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2371F4DD759A7F0A24E923F /* Pods-SocketClient.debug.xcconfig */,
+				31CE0860FE83144D0F957458 /* Pods-SocketClient.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FF17EFE12292486500C660FA = {
 			isa = PBXGroup;
 			children = (
 				FF17EFEC2292486500C660FA /* SocketClient */,
 				FF17EFEB2292486500C660FA /* Products */,
+				2D4D8B0CB5EC288130CBF363 /* Pods */,
+				075299276C0E56F75B7F89FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +94,8 @@
 		FF17EFEC2292486500C660FA /* SocketClient */ = {
 			isa = PBXGroup;
 			children = (
+				FF32FB5622A14A2700BFC087 /* Immessage.proto.swift */,
+				FF32FB5422A1400700BFC087 /* IMMessage.proto */,
 				FF17EFFF2292487500C660FA /* ysocket */,
 				FF17EFED2292486500C660FA /* AppDelegate.swift */,
 				FF17EFEF2292486500C660FA /* ViewController.swift */,
@@ -97,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF17EFFC2292486700C660FA /* Build configuration list for PBXNativeTarget "SocketClient" */;
 			buildPhases = (
+				FC4D9351148F8FDFFBC83B47 /* [CP] Check Pods Manifest.lock */,
 				FF17EFE62292486500C660FA /* Sources */,
 				FF17EFE72292486500C660FA /* Frameworks */,
 				FF17EFE82292486500C660FA /* Resources */,
+				79D5D1BAD0AA7565097CB920 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,11 +188,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		79D5D1BAD0AA7565097CB920 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SocketClient/Pods-SocketClient-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ProtocolBuffers-Swift/ProtocolBuffers.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtocolBuffers.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SocketClient/Pods-SocketClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC4D9351148F8FDFFBC83B47 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SocketClient-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FF17EFE62292486500C660FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF32FB5522A1400700BFC087 /* IMMessage.proto in Sources */,
+				FF32FB5722A14A2700BFC087 /* Immessage.proto.swift in Sources */,
 				FF17F0082292487500C660FA /* ysocket.swift in Sources */,
 				FF17EFF02292486500C660FA /* ViewController.swift in Sources */,
 				FF17EFEE2292486500C660FA /* AppDelegate.swift in Sources */,
@@ -245,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -300,7 +373,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -312,6 +385,7 @@
 		};
 		FF17EFFD2292486700C660FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2371F4DD759A7F0A24E923F /* Pods-SocketClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -319,6 +393,7 @@
 				DEVELOPMENT_TEAM = Y5WX43KK4M;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = SocketClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,6 +407,7 @@
 		};
 		FF17EFFE2292486700C660FA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31CE0860FE83144D0F957458 /* Pods-SocketClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -339,6 +415,7 @@
 				DEVELOPMENT_TEAM = Y5WX43KK4M;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = SocketClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

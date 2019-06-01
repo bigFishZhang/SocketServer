@@ -48,11 +48,8 @@ extension ClientManager {
                 }
                 let msgData = Data(bytes: msg, count: length)
                 
-                
-//                let msgData = Data(bytes: msg, count: 6)
                 let msgStr = String(data: msgData, encoding: .utf8)
                 print(msgStr ?? "miss msg")
-//
                 
             }else{
                 print("客户端断开连接")

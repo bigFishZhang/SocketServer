@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    fileprivate lazy var socket : ZBSocket  = ZBSocket(addr: "172.18.220.69", port: 7999)
+    fileprivate lazy var socket : ZBSocket  = ZBSocket(addr: "172.18.220.94", port: 7999)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +23,16 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
          let msg = "hello zhangdayu..."
          let data = msg.data(using: .utf8)!
-        // 1 消息长度写到data
-        var length = data.count
+         var length = data.count
+        
+//        let dict : [String : Any] = ["name":"zzb","message":"hello zzb","userlevel":10]
+//        let data = JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+        
+        
+         // 1 消息长度写到data
         let headData = Data(bytes: &length, count: 4)
+        
+        
         // 2 消息类型
         var tempType = 2
         let typeData = Data(bytes: &tempType, count: 2)

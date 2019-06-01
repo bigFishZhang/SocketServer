@@ -9,7 +9,7 @@
 import UIKit
 
 class ServerManager: NSObject {
-   fileprivate lazy var serverSocket = TCPServer(addr: "172.18.220.69", port: 7999)
+   fileprivate lazy var serverSocket = TCPServer(addr: "172.18.220.94", port: 7999)
    fileprivate var  isServerRunning : Bool = false
     fileprivate lazy var clientManagers : [ClientManager] = [ClientManager]()
 }
@@ -29,10 +29,9 @@ extension ServerManager {
             DispatchQueue.global().async {
                 if let client = self.serverSocket.accept(){
 //                    DispatchQueue.global().async {
-//                      
+                        print("accept connect")
+                        self.handleClient(client)
 //                    }
-                    print("accept connect")
-                    self.handleClient(client)
                 }
                 
             }
