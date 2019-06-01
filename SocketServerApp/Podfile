@@ -1,10 +1,12 @@
 # Uncomment the next line to define a global platform for your project
  platform :ios, '9.0'
 
-target 'SocketClient' do
+target 'SocketServerApp' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
 
+  pod 'ProtocolBuffers-Swift'
 
-  # Pods for SocketClient
+  # Pods for SocketServerApp
 
 end

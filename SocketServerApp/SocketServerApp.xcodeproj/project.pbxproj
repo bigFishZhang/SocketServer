@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9274770F93C92F26FAF3619 /* Pods_SocketServerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 216955C94C39812F7B2598B6 /* Pods_SocketServerApp.framework */; };
 		FF17F01C22924BFF00C660FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F01B22924BFF00C660FA /* AppDelegate.swift */; };
 		FF17F01E22924BFF00C660FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F01D22924BFF00C660FA /* ViewController.swift */; };
 		FF17F02122924BFF00C660FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF17F01F22924BFF00C660FA /* Main.storyboard */; };
@@ -18,10 +19,14 @@
 		FF17F03622924C1000C660FA /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F03122924C1000C660FA /* ysocket.swift */; };
 		FF17F03722924C1000C660FA /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F03222924C1000C660FA /* ytcpsocket.swift */; };
 		FF17F03922924D1200C660FA /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F03822924D1200C660FA /* ServerManager.swift */; };
+		FF32FB5922A2150000BFC087 /* Immessage.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF32FB5822A2150000BFC087 /* Immessage.proto.swift */; };
 		FF55C7B92292536F00B14215 /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55C7B82292536F00B14215 /* ClientManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		216955C94C39812F7B2598B6 /* Pods_SocketServerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocketServerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5376DA2728D5E9F92BAE3E2D /* Pods-SocketServerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketServerApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocketServerApp/Pods-SocketServerApp.release.xcconfig"; sourceTree = "<group>"; };
+		D69FC0AC175FA18D9F29AE64 /* Pods-SocketServerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketServerApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocketServerApp/Pods-SocketServerApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FF17F01822924BFF00C660FA /* SocketServerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketServerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF17F01B22924BFF00C660FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF17F01D22924BFF00C660FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +40,7 @@
 		FF17F03122924C1000C660FA /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = "<group>"; };
 		FF17F03222924C1000C660FA /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = "<group>"; };
 		FF17F03822924D1200C660FA /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		FF32FB5822A2150000BFC087 /* Immessage.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Immessage.proto.swift; path = ../../SocketClient/SocketClient/Immessage.proto.swift; sourceTree = "<group>"; };
 		FF55C7B82292536F00B14215 /* ClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9274770F93C92F26FAF3619 /* Pods_SocketServerApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410CB851A46BCBE959AC5E9A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D69FC0AC175FA18D9F29AE64 /* Pods-SocketServerApp.debug.xcconfig */,
+				5376DA2728D5E9F92BAE3E2D /* Pods-SocketServerApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9F3D47A7E40E2865FF14E841 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				216955C94C39812F7B2598B6 /* Pods_SocketServerApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FF17F00F22924BFF00C660FA = {
 			isa = PBXGroup;
 			children = (
 				FF17F01A22924BFF00C660FA /* SocketServerApp */,
 				FF17F01922924BFF00C660FA /* Products */,
+				410CB851A46BCBE959AC5E9A /* Pods */,
+				9F3D47A7E40E2865FF14E841 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +94,7 @@
 		FF17F01A22924BFF00C660FA /* SocketServerApp */ = {
 			isa = PBXGroup;
 			children = (
+				FF32FB5822A2150000BFC087 /* Immessage.proto.swift */,
 				FF17F02D22924C1000C660FA /* ysocket */,
 				FF17F01B22924BFF00C660FA /* AppDelegate.swift */,
 				FF17F01D22924BFF00C660FA /* ViewController.swift */,
@@ -100,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF17F02A22924C0000C660FA /* Build configuration list for PBXNativeTarget "SocketServerApp" */;
 			buildPhases = (
+				DA0E8AAE296972D3465B3ADD /* [CP] Check Pods Manifest.lock */,
 				FF17F01422924BFF00C660FA /* Sources */,
 				FF17F01522924BFF00C660FA /* Frameworks */,
 				FF17F01622924BFF00C660FA /* Resources */,
+				CAEA59EB93240FABA882EACB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,12 +188,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CAEA59EB93240FABA882EACB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SocketServerApp/Pods-SocketServerApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ProtocolBuffers-Swift/ProtocolBuffers.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtocolBuffers.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SocketServerApp/Pods-SocketServerApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA0E8AAE296972D3465B3ADD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SocketServerApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FF17F01422924BFF00C660FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FF17F03922924D1200C660FA /* ServerManager.swift in Sources */,
+				FF32FB5922A2150000BFC087 /* Immessage.proto.swift in Sources */,
 				FF17F03622924C1000C660FA /* ysocket.swift in Sources */,
 				FF17F01E22924BFF00C660FA /* ViewController.swift in Sources */,
 				FF17F01C22924BFF00C660FA /* AppDelegate.swift in Sources */,
@@ -316,6 +385,7 @@
 		};
 		FF17F02B22924C0000C660FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D69FC0AC175FA18D9F29AE64 /* Pods-SocketServerApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -336,6 +406,7 @@
 		};
 		FF17F02C22924C0000C660FA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5376DA2728D5E9F92BAE3E2D /* Pods-SocketServerApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

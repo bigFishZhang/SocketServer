@@ -48,8 +48,16 @@ extension ClientManager {
                 }
                 let msgData = Data(bytes: msg, count: length)
                 
-                let msgStr = String(data: msgData, encoding: .utf8)
-                print(msgStr ?? "miss msg")
+                switch type {
+                case 0,1:
+                    let user = try! UserInfo.parseFrom(data: msgData)
+                    print(user.name)
+                default:
+                    print("未知类型")
+                }
+                
+                //let msgStr = String(data: msgData, encoding: .utf8)
+                //print(msgStr ?? "miss msg")
                 
             }else{
                 print("客户端断开连接")
