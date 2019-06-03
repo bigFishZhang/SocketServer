@@ -27,35 +27,45 @@ final public class UserInfo : GeneratedMessage {
             return true
         }
         var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-        fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
         fieldCheck = fieldCheck && (lhs.hasLevel == rhs.hasLevel) && (!lhs.hasLevel || lhs.level == rhs.level)
+        fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
+        fieldCheck = fieldCheck && (lhs.hasIconUrl == rhs.hasIconUrl) && (!lhs.hasIconUrl || lhs.iconUrl == rhs.iconUrl)
         fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
         return fieldCheck
     }
 
+    public fileprivate(set) var level:Int32! = nil
+    public fileprivate(set) var hasLevel:Bool = false
+
     public fileprivate(set) var name:String! = nil
     public fileprivate(set) var hasName:Bool = false
 
-    public fileprivate(set) var level:Int64! = nil
-    public fileprivate(set) var hasLevel:Bool = false
+    public fileprivate(set) var iconUrl:String! = nil
+    public fileprivate(set) var hasIconUrl:Bool = false
 
     required public init() {
         super.init()
     }
     override public func isInitialized() throws {
-        if !hasName {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(UserInfo.self): field \"name\" mark required")
-        }
         if !hasLevel {
             throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(UserInfo.self): field \"level\" mark required")
         }
+        if !hasName {
+            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(UserInfo.self): field \"name\" mark required")
+        }
+        if !hasIconUrl {
+            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(UserInfo.self): field \"iconUrl\" mark required")
+        }
     }
     override public func writeTo(codedOutputStream: CodedOutputStream) throws {
-        if hasName {
-            try codedOutputStream.writeString(fieldNumber: 1, value:name)
-        }
         if hasLevel {
-            try codedOutputStream.writeInt64(fieldNumber: 2, value:level)
+            try codedOutputStream.writeInt32(fieldNumber: 1, value:level)
+        }
+        if hasName {
+            try codedOutputStream.writeString(fieldNumber: 2, value:name)
+        }
+        if hasIconUrl {
+            try codedOutputStream.writeString(fieldNumber: 3, value:iconUrl)
         }
         try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
@@ -66,11 +76,14 @@ final public class UserInfo : GeneratedMessage {
         }
 
         serialize_size = 0
-        if hasName {
-            serialize_size += name.computeStringSize(fieldNumber: 1)
-        }
         if hasLevel {
-            serialize_size += level.computeInt64Size(fieldNumber: 2)
+            serialize_size += level.computeInt32Size(fieldNumber: 1)
+        }
+        if hasName {
+            serialize_size += name.computeStringSize(fieldNumber: 2)
+        }
+        if hasIconUrl {
+            serialize_size += iconUrl.computeStringSize(fieldNumber: 3)
         }
         serialize_size += unknownFields.serializedSize()
         memoizedSerializedSize = serialize_size
@@ -97,11 +110,14 @@ final public class UserInfo : GeneratedMessage {
     override public func encode() throws -> Dictionary<String,Any> {
         try isInitialized()
         var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
+        if hasLevel {
+            jsonMap["level"] = Int(level)
+        }
         if hasName {
             jsonMap["name"] = name
         }
-        if hasLevel {
-            jsonMap["level"] = "\(level!)"
+        if hasIconUrl {
+            jsonMap["iconURL"] = iconUrl
         }
         return jsonMap
     }
@@ -113,11 +129,14 @@ final public class UserInfo : GeneratedMessage {
     }
     override public func getDescription(indent:String) throws -> String {
         var output = ""
+        if hasLevel {
+            output += "\(indent) level: \(String(describing: level)) \n"
+        }
         if hasName {
             output += "\(indent) name: \(String(describing: name)) \n"
         }
-        if hasLevel {
-            output += "\(indent) level: \(String(describing: level)) \n"
+        if hasIconUrl {
+            output += "\(indent) iconUrl: \(String(describing: iconUrl)) \n"
         }
         output += unknownFields.getDescription(indent: indent)
         return output
@@ -125,11 +144,14 @@ final public class UserInfo : GeneratedMessage {
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
+            if hasLevel {
+                hashCode = (hashCode &* 31) &+ level.hashValue
+            }
             if hasName {
                 hashCode = (hashCode &* 31) &+ name.hashValue
             }
-            if hasLevel {
-                hashCode = (hashCode &* 31) &+ level.hashValue
+            if hasIconUrl {
+                hashCode = (hashCode &* 31) &+ iconUrl.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -156,6 +178,31 @@ final public class UserInfo : GeneratedMessage {
         required override public init () {
             super.init()
         }
+        public var level:Int32 {
+            get {
+                return builderResult.level
+            }
+            set (value) {
+                builderResult.hasLevel = true
+                builderResult.level = value
+            }
+        }
+        public var hasLevel:Bool {
+            get {
+                return builderResult.hasLevel
+            }
+        }
+        @discardableResult
+        public func setLevel(_ value:Int32) -> UserInfo.Builder {
+            self.level = value
+            return self
+        }
+        @discardableResult
+        public func clearLevel() -> UserInfo.Builder{
+            builderResult.hasLevel = false
+            builderResult.level = nil
+            return self
+        }
         public var name:String {
             get {
                 return builderResult.name
@@ -181,29 +228,29 @@ final public class UserInfo : GeneratedMessage {
             builderResult.name = nil
             return self
         }
-        public var level:Int64 {
+        public var iconUrl:String {
             get {
-                return builderResult.level
+                return builderResult.iconUrl
             }
             set (value) {
-                builderResult.hasLevel = true
-                builderResult.level = value
+                builderResult.hasIconUrl = true
+                builderResult.iconUrl = value
             }
         }
-        public var hasLevel:Bool {
+        public var hasIconUrl:Bool {
             get {
-                return builderResult.hasLevel
+                return builderResult.hasIconUrl
             }
         }
         @discardableResult
-        public func setLevel(_ value:Int64) -> UserInfo.Builder {
-            self.level = value
+        public func setIconUrl(_ value:String) -> UserInfo.Builder {
+            self.iconUrl = value
             return self
         }
         @discardableResult
-        public func clearLevel() -> UserInfo.Builder{
-            builderResult.hasLevel = false
-            builderResult.level = nil
+        public func clearIconUrl() -> UserInfo.Builder{
+            builderResult.hasIconUrl = false
+            builderResult.iconUrl = nil
             return self
         }
         override public var internalGetResult:GeneratedMessage {
@@ -232,11 +279,14 @@ final public class UserInfo : GeneratedMessage {
             if other == UserInfo() {
                 return self
             }
+            if other.hasLevel {
+                level = other.level
+            }
             if other.hasName {
                 name = other.name
             }
-            if other.hasLevel {
-                level = other.level
+            if other.hasIconUrl {
+                iconUrl = other.iconUrl
             }
             try merge(unknownField: other.unknownFields)
             return self
@@ -255,11 +305,14 @@ final public class UserInfo : GeneratedMessage {
                     self.unknownFields = try unknownFieldsBuilder.build()
                     return self
 
-                case 10:
+                case 8:
+                    level = try codedInputStream.readInt32()
+
+                case 18:
                     name = try codedInputStream.readString()
 
-                case 16:
-                    level = try codedInputStream.readInt64()
+                case 26:
+                    iconUrl = try codedInputStream.readString()
 
                 default:
                     if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
@@ -271,13 +324,16 @@ final public class UserInfo : GeneratedMessage {
         }
         class override public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> UserInfo.Builder {
             let resultDecodedBuilder = UserInfo.Builder()
+            if let jsonValueLevel = jsonMap["level"] as? Int {
+                resultDecodedBuilder.level = Int32(jsonValueLevel)
+            } else if let jsonValueLevel = jsonMap["level"] as? String {
+                resultDecodedBuilder.level = Int32(jsonValueLevel)!
+            }
             if let jsonValueName = jsonMap["name"] as? String {
                 resultDecodedBuilder.name = jsonValueName
             }
-            if let jsonValueLevel = jsonMap["level"] as? String {
-                resultDecodedBuilder.level = Int64(jsonValueLevel)!
-            } else if let jsonValueLevel = jsonMap["level"] as? Int {
-                resultDecodedBuilder.level = Int64(jsonValueLevel)
+            if let jsonValueIconUrl = jsonMap["iconURL"] as? String {
+                resultDecodedBuilder.iconUrl = jsonValueIconUrl
             }
             return resultDecodedBuilder
         }
@@ -292,10 +348,10 @@ final public class UserInfo : GeneratedMessage {
 
 }
 
-final public class TextMessage : GeneratedMessage {
-    public typealias BuilderType = TextMessage.Builder
+final public class ChatMessage : GeneratedMessage {
+    public typealias BuilderType = ChatMessage.Builder
 
-    public static func == (lhs: TextMessage, rhs: TextMessage) -> Bool {
+    public static func == (lhs: ChatMessage, rhs: ChatMessage) -> Bool {
         if lhs === rhs {
             return true
         }
@@ -316,10 +372,10 @@ final public class TextMessage : GeneratedMessage {
     }
     override public func isInitialized() throws {
         if !hasUser {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(TextMessage.self): field \"user\" mark required")
+            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(ChatMessage.self): field \"user\" mark required")
         }
         if !hasText {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(TextMessage.self): field \"text\" mark required")
+            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(ChatMessage.self): field \"text\" mark required")
         }
         try user.isInitialized()
     }
@@ -351,23 +407,23 @@ final public class TextMessage : GeneratedMessage {
         memoizedSerializedSize = serialize_size
         return serialize_size
     }
-    public class func getBuilder() -> TextMessage.Builder {
-        return TextMessage.classBuilder() as! TextMessage.Builder
+    public class func getBuilder() -> ChatMessage.Builder {
+        return ChatMessage.classBuilder() as! ChatMessage.Builder
     }
-    public func getBuilder() -> TextMessage.Builder {
-        return classBuilder() as! TextMessage.Builder
+    public func getBuilder() -> ChatMessage.Builder {
+        return classBuilder() as! ChatMessage.Builder
     }
     override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
-        return TextMessage.Builder()
+        return ChatMessage.Builder()
     }
     override public func classBuilder() -> ProtocolBuffersMessageBuilder {
-        return TextMessage.Builder()
+        return ChatMessage.Builder()
     }
-    public func toBuilder() throws -> TextMessage.Builder {
-        return try TextMessage.builderWithPrototype(prototype:self)
+    public func toBuilder() throws -> ChatMessage.Builder {
+        return try ChatMessage.builderWithPrototype(prototype:self)
     }
-    public class func builderWithPrototype(prototype:TextMessage) throws -> TextMessage.Builder {
-        return try TextMessage.Builder().mergeFrom(other:prototype)
+    public class func builderWithPrototype(prototype:ChatMessage) throws -> ChatMessage.Builder {
+        return try ChatMessage.Builder().mergeFrom(other:prototype)
     }
     override public func encode() throws -> Dictionary<String,Any> {
         try isInitialized()
@@ -380,11 +436,11 @@ final public class TextMessage : GeneratedMessage {
         }
         return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> TextMessage {
-        return try TextMessage.Builder.decodeToBuilder(jsonMap:jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> ChatMessage {
+        return try ChatMessage.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:Data, options: JSONSerialization.ReadingOptions = []) throws -> TextMessage {
-        return try TextMessage.Builder.fromJSONToBuilder(data:data, options:options).build()
+    override class public func fromJSON(data:Data, options: JSONSerialization.ReadingOptions = []) throws -> ChatMessage {
+        return try ChatMessage.Builder.fromJSONToBuilder(data:data, options:options).build()
     }
     override public func getDescription(indent:String) throws -> String {
         var output = ""
@@ -421,16 +477,16 @@ final public class TextMessage : GeneratedMessage {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "TextMessage"
+        return "ChatMessage"
     }
     override public func className() -> String {
-        return "TextMessage"
+        return "ChatMessage"
     }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-        fileprivate var builderResult:TextMessage = TextMessage()
-        public func getMessage() -> TextMessage {
+        fileprivate var builderResult:ChatMessage = ChatMessage()
+        public func getMessage() -> ChatMessage {
             return builderResult
         }
 
@@ -470,12 +526,12 @@ final public class TextMessage : GeneratedMessage {
             return userBuilder_
         }
         @discardableResult
-        public func setUser(_ value:UserInfo!) -> TextMessage.Builder {
+        public func setUser(_ value:UserInfo!) -> ChatMessage.Builder {
             self.user = value
             return self
         }
         @discardableResult
-        public func mergeUser(value:UserInfo) throws -> TextMessage.Builder {
+        public func mergeUser(value:UserInfo) throws -> ChatMessage.Builder {
             if builderResult.hasUser {
                 builderResult.user = try UserInfo.builderWithPrototype(prototype:builderResult.user).mergeFrom(other: value).buildPartial()
             } else {
@@ -485,7 +541,7 @@ final public class TextMessage : GeneratedMessage {
             return self
         }
         @discardableResult
-        public func clearUser() -> TextMessage.Builder {
+        public func clearUser() -> ChatMessage.Builder {
             userBuilder_ = nil
             builderResult.hasUser = false
             builderResult.user = nil
@@ -506,12 +562,12 @@ final public class TextMessage : GeneratedMessage {
             }
         }
         @discardableResult
-        public func setText(_ value:String) -> TextMessage.Builder {
+        public func setText(_ value:String) -> ChatMessage.Builder {
             self.text = value
             return self
         }
         @discardableResult
-        public func clearText() -> TextMessage.Builder{
+        public func clearText() -> ChatMessage.Builder{
             builderResult.hasText = false
             builderResult.text = nil
             return self
@@ -522,24 +578,24 @@ final public class TextMessage : GeneratedMessage {
             }
         }
         @discardableResult
-        override public func clear() -> TextMessage.Builder {
-            builderResult = TextMessage()
+        override public func clear() -> ChatMessage.Builder {
+            builderResult = ChatMessage()
             return self
         }
-        override public func clone() throws -> TextMessage.Builder {
-            return try TextMessage.builderWithPrototype(prototype:builderResult)
+        override public func clone() throws -> ChatMessage.Builder {
+            return try ChatMessage.builderWithPrototype(prototype:builderResult)
         }
-        override public func build() throws -> TextMessage {
+        override public func build() throws -> ChatMessage {
             try checkInitialized()
             return buildPartial()
         }
-        public func buildPartial() -> TextMessage {
-            let returnMe:TextMessage = builderResult
+        public func buildPartial() -> ChatMessage {
+            let returnMe:ChatMessage = builderResult
             return returnMe
         }
         @discardableResult
-        public func mergeFrom(other:TextMessage) throws -> TextMessage.Builder {
-            if other == TextMessage() {
+        public func mergeFrom(other:ChatMessage) throws -> ChatMessage.Builder {
+            if other == ChatMessage() {
                 return self
             }
             if (other.hasUser) {
@@ -552,11 +608,11 @@ final public class TextMessage : GeneratedMessage {
             return self
         }
         @discardableResult
-        override public func mergeFrom(codedInputStream: CodedInputStream) throws -> TextMessage.Builder {
+        override public func mergeFrom(codedInputStream: CodedInputStream) throws -> ChatMessage.Builder {
             return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
         }
         @discardableResult
-        override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> TextMessage.Builder {
+        override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> ChatMessage.Builder {
             let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
             while (true) {
                 let protobufTag = try codedInputStream.readTag()
@@ -584,8 +640,8 @@ final public class TextMessage : GeneratedMessage {
                 }
             }
         }
-        class override public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> TextMessage.Builder {
-            let resultDecodedBuilder = TextMessage.Builder()
+        class override public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> ChatMessage.Builder {
+            let resultDecodedBuilder = ChatMessage.Builder()
             if let jsonValueUser = jsonMap["user"] as? Dictionary<String,Any> {
                 resultDecodedBuilder.user = try UserInfo.Builder.decodeToBuilder(jsonMap:jsonValueUser).build()
 
@@ -595,12 +651,12 @@ final public class TextMessage : GeneratedMessage {
             }
             return resultDecodedBuilder
         }
-        override class public func fromJSONToBuilder(data:Data, options: JSONSerialization.ReadingOptions = []) throws -> TextMessage.Builder {
+        override class public func fromJSONToBuilder(data:Data, options: JSONSerialization.ReadingOptions = []) throws -> ChatMessage.Builder {
             let jsonData = try JSONSerialization.jsonObject(with:data, options: options)
             guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
               throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
             }
-            return try TextMessage.Builder.decodeToBuilder(jsonMap:jsDataCast)
+            return try ChatMessage.Builder.decodeToBuilder(jsonMap:jsDataCast)
         }
     }
 
@@ -615,23 +671,23 @@ final public class GiftMessage : GeneratedMessage {
         }
         var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
         fieldCheck = fieldCheck && (lhs.hasUser == rhs.hasUser) && (!lhs.hasUser || lhs.user == rhs.user)
-        fieldCheck = fieldCheck && (lhs.hasGiftName == rhs.hasGiftName) && (!lhs.hasGiftName || lhs.giftName == rhs.giftName)
+        fieldCheck = fieldCheck && (lhs.hasGiftname == rhs.hasGiftname) && (!lhs.hasGiftname || lhs.giftname == rhs.giftname)
         fieldCheck = fieldCheck && (lhs.hasGiftUrl == rhs.hasGiftUrl) && (!lhs.hasGiftUrl || lhs.giftUrl == rhs.giftUrl)
-        fieldCheck = fieldCheck && (lhs.hasGiftCount == rhs.hasGiftCount) && (!lhs.hasGiftCount || lhs.giftCount == rhs.giftCount)
+        fieldCheck = fieldCheck && (lhs.hasGiftcount == rhs.hasGiftcount) && (!lhs.hasGiftcount || lhs.giftcount == rhs.giftcount)
         fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
         return fieldCheck
     }
 
     public fileprivate(set) var user:UserInfo!
     public fileprivate(set) var hasUser:Bool = false
-    public fileprivate(set) var giftName:String! = nil
-    public fileprivate(set) var hasGiftName:Bool = false
+    public fileprivate(set) var giftname:String! = nil
+    public fileprivate(set) var hasGiftname:Bool = false
 
     public fileprivate(set) var giftUrl:String! = nil
     public fileprivate(set) var hasGiftUrl:Bool = false
 
-    public fileprivate(set) var giftCount:String! = nil
-    public fileprivate(set) var hasGiftCount:Bool = false
+    public fileprivate(set) var giftcount:Int32! = nil
+    public fileprivate(set) var hasGiftcount:Bool = false
 
     required public init() {
         super.init()
@@ -640,14 +696,14 @@ final public class GiftMessage : GeneratedMessage {
         if !hasUser {
             throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(GiftMessage.self): field \"user\" mark required")
         }
-        if !hasGiftName {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(GiftMessage.self): field \"giftName\" mark required")
+        if !hasGiftname {
+            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(GiftMessage.self): field \"giftname\" mark required")
         }
         if !hasGiftUrl {
             throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(GiftMessage.self): field \"giftUrl\" mark required")
         }
-        if !hasGiftCount {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(GiftMessage.self): field \"giftCount\" mark required")
+        if !hasGiftcount {
+            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message \(GiftMessage.self): field \"giftcount\" mark required")
         }
         try user.isInitialized()
     }
@@ -655,14 +711,14 @@ final public class GiftMessage : GeneratedMessage {
         if hasUser {
             try codedOutputStream.writeMessage(fieldNumber: 1, value:user)
         }
-        if hasGiftName {
-            try codedOutputStream.writeString(fieldNumber: 2, value:giftName)
+        if hasGiftname {
+            try codedOutputStream.writeString(fieldNumber: 2, value:giftname)
         }
         if hasGiftUrl {
             try codedOutputStream.writeString(fieldNumber: 3, value:giftUrl)
         }
-        if hasGiftCount {
-            try codedOutputStream.writeString(fieldNumber: 4, value:giftCount)
+        if hasGiftcount {
+            try codedOutputStream.writeInt32(fieldNumber: 4, value:giftcount)
         }
         try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
@@ -678,14 +734,14 @@ final public class GiftMessage : GeneratedMessage {
                 serialize_size += varSizeuser
             }
         }
-        if hasGiftName {
-            serialize_size += giftName.computeStringSize(fieldNumber: 2)
+        if hasGiftname {
+            serialize_size += giftname.computeStringSize(fieldNumber: 2)
         }
         if hasGiftUrl {
             serialize_size += giftUrl.computeStringSize(fieldNumber: 3)
         }
-        if hasGiftCount {
-            serialize_size += giftCount.computeStringSize(fieldNumber: 4)
+        if hasGiftcount {
+            serialize_size += giftcount.computeInt32Size(fieldNumber: 4)
         }
         serialize_size += unknownFields.serializedSize()
         memoizedSerializedSize = serialize_size
@@ -715,14 +771,14 @@ final public class GiftMessage : GeneratedMessage {
         if hasUser {
             jsonMap["user"] = try user.encode()
         }
-        if hasGiftName {
-            jsonMap["giftName"] = giftName
+        if hasGiftname {
+            jsonMap["giftname"] = giftname
         }
         if hasGiftUrl {
             jsonMap["giftURL"] = giftUrl
         }
-        if hasGiftCount {
-            jsonMap["giftCount"] = giftCount
+        if hasGiftcount {
+            jsonMap["giftcount"] = Int(giftcount)
         }
         return jsonMap
     }
@@ -741,14 +797,14 @@ final public class GiftMessage : GeneratedMessage {
             }
             output += "\(indent) }\n"
         }
-        if hasGiftName {
-            output += "\(indent) giftName: \(String(describing: giftName)) \n"
+        if hasGiftname {
+            output += "\(indent) giftname: \(String(describing: giftname)) \n"
         }
         if hasGiftUrl {
             output += "\(indent) giftUrl: \(String(describing: giftUrl)) \n"
         }
-        if hasGiftCount {
-            output += "\(indent) giftCount: \(String(describing: giftCount)) \n"
+        if hasGiftcount {
+            output += "\(indent) giftcount: \(String(describing: giftcount)) \n"
         }
         output += unknownFields.getDescription(indent: indent)
         return output
@@ -761,14 +817,14 @@ final public class GiftMessage : GeneratedMessage {
                     hashCode = (hashCode &* 31) &+ hashValueuser
                 }
             }
-            if hasGiftName {
-                hashCode = (hashCode &* 31) &+ giftName.hashValue
+            if hasGiftname {
+                hashCode = (hashCode &* 31) &+ giftname.hashValue
             }
             if hasGiftUrl {
                 hashCode = (hashCode &* 31) &+ giftUrl.hashValue
             }
-            if hasGiftCount {
-                hashCode = (hashCode &* 31) &+ giftCount.hashValue
+            if hasGiftcount {
+                hashCode = (hashCode &* 31) &+ giftcount.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -849,29 +905,29 @@ final public class GiftMessage : GeneratedMessage {
             builderResult.user = nil
             return self
         }
-        public var giftName:String {
+        public var giftname:String {
             get {
-                return builderResult.giftName
+                return builderResult.giftname
             }
             set (value) {
-                builderResult.hasGiftName = true
-                builderResult.giftName = value
+                builderResult.hasGiftname = true
+                builderResult.giftname = value
             }
         }
-        public var hasGiftName:Bool {
+        public var hasGiftname:Bool {
             get {
-                return builderResult.hasGiftName
+                return builderResult.hasGiftname
             }
         }
         @discardableResult
-        public func setGiftName(_ value:String) -> GiftMessage.Builder {
-            self.giftName = value
+        public func setGiftname(_ value:String) -> GiftMessage.Builder {
+            self.giftname = value
             return self
         }
         @discardableResult
-        public func clearGiftName() -> GiftMessage.Builder{
-            builderResult.hasGiftName = false
-            builderResult.giftName = nil
+        public func clearGiftname() -> GiftMessage.Builder{
+            builderResult.hasGiftname = false
+            builderResult.giftname = nil
             return self
         }
         public var giftUrl:String {
@@ -899,29 +955,29 @@ final public class GiftMessage : GeneratedMessage {
             builderResult.giftUrl = nil
             return self
         }
-        public var giftCount:String {
+        public var giftcount:Int32 {
             get {
-                return builderResult.giftCount
+                return builderResult.giftcount
             }
             set (value) {
-                builderResult.hasGiftCount = true
-                builderResult.giftCount = value
+                builderResult.hasGiftcount = true
+                builderResult.giftcount = value
             }
         }
-        public var hasGiftCount:Bool {
+        public var hasGiftcount:Bool {
             get {
-                return builderResult.hasGiftCount
+                return builderResult.hasGiftcount
             }
         }
         @discardableResult
-        public func setGiftCount(_ value:String) -> GiftMessage.Builder {
-            self.giftCount = value
+        public func setGiftcount(_ value:Int32) -> GiftMessage.Builder {
+            self.giftcount = value
             return self
         }
         @discardableResult
-        public func clearGiftCount() -> GiftMessage.Builder{
-            builderResult.hasGiftCount = false
-            builderResult.giftCount = nil
+        public func clearGiftcount() -> GiftMessage.Builder{
+            builderResult.hasGiftcount = false
+            builderResult.giftcount = nil
             return self
         }
         override public var internalGetResult:GeneratedMessage {
@@ -953,14 +1009,14 @@ final public class GiftMessage : GeneratedMessage {
             if (other.hasUser) {
                 try mergeUser(value: other.user)
             }
-            if other.hasGiftName {
-                giftName = other.giftName
+            if other.hasGiftname {
+                giftname = other.giftname
             }
             if other.hasGiftUrl {
                 giftUrl = other.giftUrl
             }
-            if other.hasGiftCount {
-                giftCount = other.giftCount
+            if other.hasGiftcount {
+                giftcount = other.giftcount
             }
             try merge(unknownField: other.unknownFields)
             return self
@@ -988,13 +1044,13 @@ final public class GiftMessage : GeneratedMessage {
                     user = subBuilder.buildPartial()
 
                 case 18:
-                    giftName = try codedInputStream.readString()
+                    giftname = try codedInputStream.readString()
 
                 case 26:
                     giftUrl = try codedInputStream.readString()
 
-                case 34:
-                    giftCount = try codedInputStream.readString()
+                case 32:
+                    giftcount = try codedInputStream.readInt32()
 
                 default:
                     if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
@@ -1010,14 +1066,16 @@ final public class GiftMessage : GeneratedMessage {
                 resultDecodedBuilder.user = try UserInfo.Builder.decodeToBuilder(jsonMap:jsonValueUser).build()
 
             }
-            if let jsonValueGiftName = jsonMap["giftName"] as? String {
-                resultDecodedBuilder.giftName = jsonValueGiftName
+            if let jsonValueGiftname = jsonMap["giftname"] as? String {
+                resultDecodedBuilder.giftname = jsonValueGiftname
             }
             if let jsonValueGiftUrl = jsonMap["giftURL"] as? String {
                 resultDecodedBuilder.giftUrl = jsonValueGiftUrl
             }
-            if let jsonValueGiftCount = jsonMap["giftCount"] as? String {
-                resultDecodedBuilder.giftCount = jsonValueGiftCount
+            if let jsonValueGiftcount = jsonMap["giftcount"] as? Int {
+                resultDecodedBuilder.giftcount = Int32(jsonValueGiftcount)
+            } else if let jsonValueGiftcount = jsonMap["giftcount"] as? String {
+                resultDecodedBuilder.giftcount = Int32(jsonValueGiftcount)!
             }
             return resultDecodedBuilder
         }
@@ -1063,8 +1121,9 @@ extension UserInfo: GeneratedMessageProtocol {
     }
     public subscript(key: String) -> Any? {
         switch key {
-        case "name": return self.name
         case "level": return self.level
+        case "name": return self.name
+        case "iconUrl": return self.iconUrl
         default: return nil
         }
     }
@@ -1074,56 +1133,62 @@ extension UserInfo.Builder: GeneratedMessageBuilderProtocol {
     public subscript(key: String) -> Any? {
         get { 
             switch key {
-            case "name": return self.name
             case "level": return self.level
+            case "name": return self.name
+            case "iconUrl": return self.iconUrl
             default: return nil
             }
         }
         set (newSubscriptValue) { 
             switch key {
+            case "level":
+                guard let newSubscriptValue = newSubscriptValue as? Int32 else {
+                    return
+                }
+                self.level = newSubscriptValue
             case "name":
                 guard let newSubscriptValue = newSubscriptValue as? String else {
                     return
                 }
                 self.name = newSubscriptValue
-            case "level":
-                guard let newSubscriptValue = newSubscriptValue as? Int64 else {
+            case "iconUrl":
+                guard let newSubscriptValue = newSubscriptValue as? String else {
                     return
                 }
-                self.level = newSubscriptValue
+                self.iconUrl = newSubscriptValue
             default: return
             }
         }
     }
 }
-extension TextMessage: GeneratedMessageProtocol {
-    public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<TextMessage> {
-        var mergedArray = Array<TextMessage>()
+extension ChatMessage: GeneratedMessageProtocol {
+    public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<ChatMessage> {
+        var mergedArray = Array<ChatMessage>()
         while let value = try parseDelimitedFrom(inputStream: inputStream) {
           mergedArray.append(value)
         }
         return mergedArray
     }
-    public class func parseDelimitedFrom(inputStream: InputStream) throws -> TextMessage? {
-        return try TextMessage.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+    public class func parseDelimitedFrom(inputStream: InputStream) throws -> ChatMessage? {
+        return try ChatMessage.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
     }
-    public class func parseFrom(data: Data) throws -> TextMessage {
-        return try TextMessage.Builder().mergeFrom(data: data, extensionRegistry:ImmessageRoot.default.extensionRegistry).build()
+    public class func parseFrom(data: Data) throws -> ChatMessage {
+        return try ChatMessage.Builder().mergeFrom(data: data, extensionRegistry:ImmessageRoot.default.extensionRegistry).build()
     }
-    public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> TextMessage {
-        return try TextMessage.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+    public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> ChatMessage {
+        return try ChatMessage.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFrom(inputStream: InputStream) throws -> TextMessage {
-        return try TextMessage.Builder().mergeFrom(inputStream: inputStream).build()
+    public class func parseFrom(inputStream: InputStream) throws -> ChatMessage {
+        return try ChatMessage.Builder().mergeFrom(inputStream: inputStream).build()
     }
-    public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> TextMessage {
-        return try TextMessage.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+    public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> ChatMessage {
+        return try ChatMessage.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
     }
-    public class func parseFrom(codedInputStream: CodedInputStream) throws -> TextMessage {
-        return try TextMessage.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+    public class func parseFrom(codedInputStream: CodedInputStream) throws -> ChatMessage {
+        return try ChatMessage.Builder().mergeFrom(codedInputStream: codedInputStream).build()
     }
-    public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> TextMessage {
-        return try TextMessage.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+    public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> ChatMessage {
+        return try ChatMessage.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
     }
     public subscript(key: String) -> Any? {
         switch key {
@@ -1133,8 +1198,8 @@ extension TextMessage: GeneratedMessageProtocol {
         }
     }
 }
-extension TextMessage.Builder: GeneratedMessageBuilderProtocol {
-    public typealias GeneratedMessageType = TextMessage
+extension ChatMessage.Builder: GeneratedMessageBuilderProtocol {
+    public typealias GeneratedMessageType = ChatMessage
     public subscript(key: String) -> Any? {
         get { 
             switch key {
@@ -1192,9 +1257,9 @@ extension GiftMessage: GeneratedMessageProtocol {
     public subscript(key: String) -> Any? {
         switch key {
         case "user": return self.user
-        case "giftName": return self.giftName
+        case "giftname": return self.giftname
         case "giftUrl": return self.giftUrl
-        case "giftCount": return self.giftCount
+        case "giftcount": return self.giftcount
         default: return nil
         }
     }
@@ -1205,9 +1270,9 @@ extension GiftMessage.Builder: GeneratedMessageBuilderProtocol {
         get { 
             switch key {
             case "user": return self.user
-            case "giftName": return self.giftName
+            case "giftname": return self.giftname
             case "giftUrl": return self.giftUrl
-            case "giftCount": return self.giftCount
+            case "giftcount": return self.giftcount
             default: return nil
             }
         }
@@ -1218,21 +1283,21 @@ extension GiftMessage.Builder: GeneratedMessageBuilderProtocol {
                     return
                 }
                 self.user = newSubscriptValue
-            case "giftName":
+            case "giftname":
                 guard let newSubscriptValue = newSubscriptValue as? String else {
                     return
                 }
-                self.giftName = newSubscriptValue
+                self.giftname = newSubscriptValue
             case "giftUrl":
                 guard let newSubscriptValue = newSubscriptValue as? String else {
                     return
                 }
                 self.giftUrl = newSubscriptValue
-            case "giftCount":
-                guard let newSubscriptValue = newSubscriptValue as? String else {
+            case "giftcount":
+                guard let newSubscriptValue = newSubscriptValue as? Int32 else {
                     return
                 }
-                self.giftCount = newSubscriptValue
+                self.giftcount = newSubscriptValue
             default: return
             }
         }

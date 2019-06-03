@@ -19,8 +19,8 @@
 		FF17F03622924C1000C660FA /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F03122924C1000C660FA /* ysocket.swift */; };
 		FF17F03722924C1000C660FA /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F03222924C1000C660FA /* ytcpsocket.swift */; };
 		FF17F03922924D1200C660FA /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F03822924D1200C660FA /* ServerManager.swift */; };
-		FF32FB5922A2150000BFC087 /* Immessage.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF32FB5822A2150000BFC087 /* Immessage.proto.swift */; };
 		FF55C7B92292536F00B14215 /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55C7B82292536F00B14215 /* ClientManager.swift */; };
+		FFBB361622A4C8180095616A /* Immessage.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBB361522A4C8180095616A /* Immessage.proto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +40,8 @@
 		FF17F03122924C1000C660FA /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = "<group>"; };
 		FF17F03222924C1000C660FA /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = "<group>"; };
 		FF17F03822924D1200C660FA /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
-		FF32FB5822A2150000BFC087 /* Immessage.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Immessage.proto.swift; path = ../../SocketClient/SocketClient/Immessage.proto.swift; sourceTree = "<group>"; };
 		FF55C7B82292536F00B14215 /* ClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
+		FFBB361522A4C8180095616A /* Immessage.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Immessage.proto.swift; path = ../../SocketClient/SocketClient/Immessage.proto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +94,7 @@
 		FF17F01A22924BFF00C660FA /* SocketServerApp */ = {
 			isa = PBXGroup;
 			children = (
-				FF32FB5822A2150000BFC087 /* Immessage.proto.swift */,
+				FFBB361522A4C8180095616A /* Immessage.proto.swift */,
 				FF17F02D22924C1000C660FA /* ysocket */,
 				FF17F01B22924BFF00C660FA /* AppDelegate.swift */,
 				FF17F01D22924BFF00C660FA /* ViewController.swift */,
@@ -233,7 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF17F03922924D1200C660FA /* ServerManager.swift in Sources */,
-				FF32FB5922A2150000BFC087 /* Immessage.proto.swift in Sources */,
+				FFBB361622A4C8180095616A /* Immessage.proto.swift in Sources */,
 				FF17F03622924C1000C660FA /* ysocket.swift in Sources */,
 				FF17F01E22924BFF00C660FA /* ViewController.swift in Sources */,
 				FF17F01C22924BFF00C660FA /* AppDelegate.swift in Sources */,

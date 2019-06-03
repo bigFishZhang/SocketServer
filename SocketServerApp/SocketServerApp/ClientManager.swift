@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol ClientManagerDelegate:class {
+    func sendMsgToClient(_ data:Data)
+}
+
 class ClientManager: NSObject {
+    weak var delegate:ClientManagerDelegate?
     
     var tcpClient : TCPClient
     
@@ -47,6 +52,9 @@ extension ClientManager {
                     return;
                 }
                 let msgData = Data(bytes: msg, count: length)
+                
+                let totalData = headData + typeData + msgData
+                delegate?.sendMsgToClient(totalData)
                 
                 switch type {
                 case 0,1:

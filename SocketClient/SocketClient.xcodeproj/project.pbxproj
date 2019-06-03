@@ -20,7 +20,7 @@
 		FF17F0092292487500C660FA /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F0042292487500C660FA /* ytcpsocket.swift */; };
 		FF17F00B2292488E00C660FA /* ZBSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF17F00A2292488E00C660FA /* ZBSocket.swift */; };
 		FF32FB5522A1400700BFC087 /* IMMessage.proto in Sources */ = {isa = PBXBuildFile; fileRef = FF32FB5422A1400700BFC087 /* IMMessage.proto */; };
-		FF32FB5722A14A2700BFC087 /* Immessage.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF32FB5622A14A2700BFC087 /* Immessage.proto.swift */; };
+		FFBB361422A4C7FD0095616A /* Immessage.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBB361322A4C7FD0095616A /* Immessage.proto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		FF17F0042292487500C660FA /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = "<group>"; };
 		FF17F00A2292488E00C660FA /* ZBSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZBSocket.swift; sourceTree = "<group>"; };
 		FF32FB5422A1400700BFC087 /* IMMessage.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = IMMessage.proto; sourceTree = "<group>"; };
-		FF32FB5622A14A2700BFC087 /* Immessage.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Immessage.proto.swift; sourceTree = "<group>"; };
+		FFBB361322A4C7FD0095616A /* Immessage.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Immessage.proto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +94,7 @@
 		FF17EFEC2292486500C660FA /* SocketClient */ = {
 			isa = PBXGroup;
 			children = (
-				FF32FB5622A14A2700BFC087 /* Immessage.proto.swift */,
+				FFBB361322A4C7FD0095616A /* Immessage.proto.swift */,
 				FF32FB5422A1400700BFC087 /* IMMessage.proto */,
 				FF17EFFF2292487500C660FA /* ysocket */,
 				FF17EFED2292486500C660FA /* AppDelegate.swift */,
@@ -233,7 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF32FB5522A1400700BFC087 /* IMMessage.proto in Sources */,
-				FF32FB5722A14A2700BFC087 /* Immessage.proto.swift in Sources */,
+				FFBB361422A4C7FD0095616A /* Immessage.proto.swift in Sources */,
 				FF17F0082292487500C660FA /* ysocket.swift in Sources */,
 				FF17EFF02292486500C660FA /* ViewController.swift in Sources */,
 				FF17EFEE2292486500C660FA /* AppDelegate.swift in Sources */,
