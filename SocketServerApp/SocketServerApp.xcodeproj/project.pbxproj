@@ -94,6 +94,8 @@
 		FF17F01A22924BFF00C660FA /* SocketServerApp */ = {
 			isa = PBXGroup;
 			children = (
+				FF17F03822924D1200C660FA /* ServerManager.swift */,
+				FF55C7B82292536F00B14215 /* ClientManager.swift */,
 				FFBB361522A4C8180095616A /* Immessage.proto.swift */,
 				FF17F02D22924C1000C660FA /* ysocket */,
 				FF17F01B22924BFF00C660FA /* AppDelegate.swift */,
@@ -102,8 +104,6 @@
 				FF17F02222924C0000C660FA /* Assets.xcassets */,
 				FF17F02422924C0000C660FA /* LaunchScreen.storyboard */,
 				FF17F02722924C0000C660FA /* Info.plist */,
-				FF17F03822924D1200C660FA /* ServerManager.swift */,
-				FF55C7B82292536F00B14215 /* ClientManager.swift */,
 			);
 			path = SocketServerApp;
 			sourceTree = "<group>";

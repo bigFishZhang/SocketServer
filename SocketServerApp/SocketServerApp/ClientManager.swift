@@ -10,6 +10,7 @@ import UIKit
 
 protocol ClientManagerDelegate:class {
     func sendMsgToClient(_ data:Data)
+    func removeClient(_ client:ClientManager)
 }
 
 class ClientManager: NSObject {
@@ -18,6 +19,8 @@ class ClientManager: NSObject {
     var tcpClient : TCPClient
     
     fileprivate var isClientConnected : Bool = false
+    
+    fileprivate var heartTimeCount : Int = 0
     
     init(tcpClient:TCPClient){
         self.tcpClient = tcpClient
@@ -29,6 +32,11 @@ extension ClientManager {
     func startReadMsg(){
         //参数是消息的长度
         isClientConnected = true
+        
+        let timer = Timer(fireAt: Date(), interval: 1, target: self, selector: #selector(checkHeartBeat), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer, forMode:.commonModes)
+        timer.fire()
+        
         while isClientConnected {
             if let lMsg = tcpClient.read(4){
                 // 1 读取数据长度
@@ -53,27 +61,44 @@ extension ClientManager {
                 }
                 let msgData = Data(bytes: msg, count: length)
                 
+                //如果是离开房间消息 就从系统移除
+                if type == 1{
+                    tcpClient.close()
+                    delegate?.removeClient(self)
+                }else if type == 100{
+                    heartTimeCount = 0
+                    continue
+                }
+                
+                //发送消息
                 let totalData = headData + typeData + msgData
                 delegate?.sendMsgToClient(totalData)
                 
-                switch type {
-                case 0,1:
-                    let user = try! UserInfo.parseFrom(data: msgData)
-                    print(user.name)
-                default:
-                    print("未知类型")
-                }
-                
-                //let msgStr = String(data: msgData, encoding: .utf8)
-                //print(msgStr ?? "miss msg")
-                
+
             }else{
-                print("客户端断开连接")
-                isClientConnected = false
-                
+                self.removeClient()
             }
         }
-       
         
     }
+    
+    
+    @objc fileprivate func checkHeartBeat() {
+        heartTimeCount += 1
+        if heartTimeCount >= 10 {
+            self.removeClient()
+        }
+    }
+    
+    
+    private func removeClient(){
+        delegate?.removeClient(self)
+        isClientConnected = false
+        print("客户端断开了连接")
+        tcpClient.close()
+    }
+    
+    
+    
+    
 }

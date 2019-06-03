@@ -8,10 +8,12 @@
 
 import UIKit
 
+
+
 class ServerManager: NSObject {
    fileprivate lazy var serverSocket = TCPServer(addr: "172.18.220.163", port: 7999)
    fileprivate var  isServerRunning : Bool = false
-    fileprivate lazy var clientManagers : [ClientManager] = [ClientManager]()
+   fileprivate lazy var clientManagers : [ClientManager] = [ClientManager]()
 }
 extension ServerManager {
     
@@ -72,6 +74,16 @@ extension ServerManager : ClientManagerDelegate{
                 print("转发消息失败")
             }
         }
+    }
+    
+    func removeClient(_ client: ClientManager) {
+        guard let index = clientManagers.firstIndex(of: client) else {
+            return
+        }
+        print("client index: \(index)")
+        
+        clientManagers.remove(at: index)
+        
     }
 }
 
