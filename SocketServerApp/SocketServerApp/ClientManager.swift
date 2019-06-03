@@ -67,6 +67,8 @@ extension ClientManager {
                     delegate?.removeClient(self)
                 }else if type == 100{
                     heartTimeCount = 0
+                    let msg = String(data: msgData, encoding: .utf8)
+                    print(msg ?? "")
                     continue
                 }
                 

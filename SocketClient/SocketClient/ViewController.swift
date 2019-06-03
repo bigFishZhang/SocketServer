@@ -11,16 +11,31 @@ import UIKit
 class ViewController: UIViewController {
     fileprivate lazy var socket : ZBSocket  = ZBSocket(addr: "172.18.220.163", port: 7999)
 
+    fileprivate var timer : Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if socket.connectServer() {
             print("connectServer")
             socket.startReadMsg()
+            
+            //发送心跳
+            timer = Timer(fireAt: Date(), interval: 9, target: self, selector: #selector(sendHeartBeat), userInfo: nil, repeats: true)
+            RunLoop.main.add(timer, forMode: .commonModes)
+            
+            
+            
         }else {
             print("connectServer failed!")
         }
-        // Do any additional setup after loading the view, typically from a nib.
+       
     }
+    
+    deinit {
+        timer.invalidate()
+        timer = nil
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //         let msg = "hello zhangdayu..."
 //         let data = msg.data(using: .utf8)!
@@ -75,3 +90,8 @@ class ViewController: UIViewController {
 
 
 
+extension ViewController {
+    @objc fileprivate func sendHeartBeat(){
+        socket.sendHeartBeat()
+    }
+}

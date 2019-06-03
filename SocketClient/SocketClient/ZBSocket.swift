@@ -13,6 +13,7 @@ enum MessageType : Int {
     case leave = 1
     case text  = 2
     case gift  = 3
+    case heartBeat = 100
 }
 
 //protocol ZBSocketDelegate:class {
@@ -42,6 +43,7 @@ class ZBSocket: NSObject {
 }
 
 extension ZBSocket {
+    @discardableResult
     func connectServer() -> Bool {
         return tcpClient.connect(timeout: 5).0
     }
@@ -129,6 +131,16 @@ extension ZBSocket {
 }
 
 extension ZBSocket {
+    
+    func sendHeartBeat()  {
+        let heartString = "heartString"
+        
+        let heartData = heartString.data(using: .utf8)!
+        
+        sendMsg(type: 100, msgData: heartData)
+    }
+    
+    
     func sendJoinRoom()  {
         // 1.获取长度
         let data = (try! userInfo.build()).data()
