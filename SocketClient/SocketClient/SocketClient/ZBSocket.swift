@@ -16,16 +16,16 @@ enum MessageType : Int {
     case heartBeat = 100
 }
 
-//protocol ZBSocketDelegate:class {
-//    func socket(_ socket : ZBSocket ,joinRoom user : UserInfo)
-//    func socket(_ socket : ZBSocket ,leaveRoom user : UserInfo)
-//    func socket(_ socket : ZBSocket ,chatMsg : ChatMessage)
-//    func socket(_ socket : ZBSocket ,giftMsg : ChatMessage)
-//}
+protocol ZBSocketDelegate:class {
+    func socket(_ socket : ZBSocket ,joinRoom user : UserInfo)
+    func socket(_ socket : ZBSocket ,leaveRoom user : UserInfo)
+    func socket(_ socket : ZBSocket ,chatMsg : ChatMessage)
+    func socket(_ socket : ZBSocket ,giftMsg : GiftMessage)
+}
 
 
 class ZBSocket: NSObject {
-   // weak var delegate : ZBSocketDelegate?
+    weak var delegate : ZBSocketDelegate?
     fileprivate  var tcpClient : TCPClient
     fileprivate  lazy var userInfo : UserInfo.Builder = {
         let userInfo = UserInfo.Builder()
@@ -38,7 +38,7 @@ class ZBSocket: NSObject {
     
     
     init(addr: String, port: Int){
-       tcpClient = TCPClient(addr: addr, port: port)
+        tcpClient = TCPClient(addr: addr, port: port)
     }
 }
 
@@ -109,20 +109,22 @@ extension ZBSocket {
         switch type {
         case 0,1:
             let user = try! UserInfo.parseFrom(data: msgData)
-            print("type\(type)",user.name, user.level, user.iconUrl)
-        
+            //print("type\(type)",user.name!, user.level!, user.iconUrl!)
+            type == 0 ? delegate?.socket(self, joinRoom: user) : delegate?.socket(self, leaveRoom: user)
         case 2:
             let chatMsg = try! ChatMessage.parseFrom(data: msgData)
-            print("type\(type)",chatMsg.text)
-            print("type\(type)",chatMsg.user.name, chatMsg.user.level, chatMsg.user.iconUrl)
+            //print("type\(type)",chatMsg.text!)
+            //print("type\(type)",chatMsg.user.name!, chatMsg.user.level!, chatMsg.user.iconUrl!)
+            delegate?.socket(self, chatMsg: chatMsg)
         case 3:
             let giftMsg = try! GiftMessage.parseFrom(data: msgData)
-            print("type\(type)",giftMsg.giftUrl, giftMsg.giftname, giftMsg.giftcount)
-            print("type\(type)",giftMsg.user.name, giftMsg.user.level, giftMsg.user.iconUrl)
+            //print("type\(type)",giftMsg.giftUrl!, giftMsg.giftname!, giftMsg.giftcount!)
+            //print("type\(type)",giftMsg.user.name!, giftMsg.user.level!, giftMsg.user.iconUrl!)
+            delegate?.socket(self, giftMsg: giftMsg)
         default:
             print("其他消息类型")
         }
-
+        
         
     }
     
@@ -147,7 +149,7 @@ extension ZBSocket {
         
         // 2.发送消息
         sendMsg(type: 0, msgData: data)
-            
+        
         
     }
     
@@ -156,8 +158,8 @@ extension ZBSocket {
         let data = (try! userInfo.build()).data()
         
         // 2.发送消息
-         sendMsg(type: 1, msgData: data)
-            
+        sendMsg(type: 1, msgData: data)
+        
         
     }
     func sendTextMsg(_ text : String) {

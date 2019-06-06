@@ -11,7 +11,7 @@ import UIKit
 
 
 class ServerManager: NSObject {
-   fileprivate lazy var serverSocket = TCPServer(addr: "172.18.220.163", port: 7999)
+   fileprivate lazy var serverSocket = TCPServer(addr: "172.18.220.109", port: 7999)
    fileprivate var  isServerRunning : Bool = false
    fileprivate lazy var clientManagers : [ClientManager] = [ClientManager]()
 }

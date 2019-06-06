@@ -94,16 +94,13 @@
 		FF17EFEC2292486500C660FA /* SocketClient */ = {
 			isa = PBXGroup;
 			children = (
-				FFBB361322A4C7FD0095616A /* Immessage.proto.swift */,
-				FF32FB5422A1400700BFC087 /* IMMessage.proto */,
-				FF17EFFF2292487500C660FA /* ysocket */,
+				FFBB361A22A523010095616A /* SocketClient */,
 				FF17EFED2292486500C660FA /* AppDelegate.swift */,
 				FF17EFEF2292486500C660FA /* ViewController.swift */,
 				FF17EFF12292486500C660FA /* Main.storyboard */,
 				FF17EFF42292486700C660FA /* Assets.xcassets */,
 				FF17EFF62292486700C660FA /* LaunchScreen.storyboard */,
 				FF17EFF92292486700C660FA /* Info.plist */,
-				FF17F00A2292488E00C660FA /* ZBSocket.swift */,
 			);
 			path = SocketClient;
 			sourceTree = "<group>";
@@ -118,6 +115,17 @@
 				FF17F0042292487500C660FA /* ytcpsocket.swift */,
 			);
 			path = ysocket;
+			sourceTree = "<group>";
+		};
+		FFBB361A22A523010095616A /* SocketClient */ = {
+			isa = PBXGroup;
+			children = (
+				FF17F00A2292488E00C660FA /* ZBSocket.swift */,
+				FFBB361322A4C7FD0095616A /* Immessage.proto.swift */,
+				FF32FB5422A1400700BFC087 /* IMMessage.proto */,
+				FF17EFFF2292487500C660FA /* ysocket */,
+			);
+			path = SocketClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
